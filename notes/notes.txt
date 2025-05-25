@@ -1,0 +1,22 @@
+
+* spring.datasource.url=jdbc:postgresql://localhost:5432/jpa_demo
+    means:
+    jdbc:postgresql:// → Tells Java to use the PostgreSQL JDBC driver
+    localhost → Database is running on your local machine
+    5432 → Default port PostgreSQL listens on
+    /jpa_demo → Name of the database you want to connect to
+    make sure you’ve already created a database in PostgreSQL named jpa_demo.
+
+* public interface StudentRepo extends JpaRepository<Student, Integer>{...}
+    Here JpaRepository<Student, Integer> is the type of object that we'll be working with and in this object our primary key will be the RollNo,
+    and the type of RollNo is integer so in the 2nd param type of primary key is passed.
+
+* Add "@Entity" annotation in the Student model class so that this class should be persisted(objects of this class (Student) to be saved into, 
+  retrieved from, updated, and deleted from a database table.) in the database.
+
+* Since this class is now persisted in DB, next step is to assign "Primary key" that is done by using "@Id" annotation. E.g. :
+    @Entity
+    public class Student {
+	@Id
+	private int rollNo;........}     
+    

@@ -1,0 +1,34 @@
+* What is ORM?
+    ORM (Object-Relational Mapping) is a technique that helps you interact with a database using Java objects instead of writing SQL queries directly.
+    🔸 For example:
+    You have a User class in Java.
+    Instead of writing SQL queries like SELECT * FROM users, ORM lets you do something like userRepository.findAll() in Java.
+    ORM converts:
+    Java objects ➡️ Database tables
+    Java fields ➡️ Table columns
+
+* What is JPA?
+    JPA (Java Persistence API) is a standard or specification for ORM in Java.
+    🔹 Think of JPA as a set of rules or interfaces that define how Java objects should be mapped to a database.
+    But JPA itself is just a guideline — it needs a provider to work (like Hibernate).
+
+* Why JPA Was Introduced
+    1. Writing plain JDBC code (like ResultSet, Statement, etc.) was boilerplate-heavy and error-prone.
+    2. ORM tools like Hibernate made this easier, but needed a standard API → JPA was created.
+    3. JPA is a specification, not a tool; Hibernate is the most popular implementation
+
+* What is Spring Data JPA?
+    Spring Data JPA is a part of Spring Framework that makes working with JPA even easier.
+    It adds:
+        Repository interfaces like CrudRepository, JpaRepository
+        Auto implementation of common queries
+        Cleaner and faster development
+
+*   | Concept              | Description                               |
+    | -------------------- | ----------------------------------------- |
+    | `@Entity`            | Class mapped to a table in DB             |
+    | `@Id`                | Primary key of the entity                 |
+    | `@GeneratedValue`    | Auto-generate primary key                 |
+    | `@Column`            | Maps a field to a DB column               |
+    | `@Table(name="...")` | (Optional) Specify custom table name      |
+    | `@Repository`        | Marks DAO layer (can use `JpaRepository`) |
