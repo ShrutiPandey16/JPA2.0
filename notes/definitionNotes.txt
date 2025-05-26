@@ -35,7 +35,12 @@
 
 * Internally, JpaRepository extends PagingAndSortingRepository, which itself extends CrudRepository. This means the repo inherits many useful methods for data access.
 
-* Spring Data JPA – Method Queries & DSL
+* DSL = Domain-Specific Language
+    It's a custom query language designed specifically for working with domain entities.
+    When you write method names like findByEmailAndAge(), JPA interprets them using a DSL that maps method names to SQL queries based on the domain model (your entity classes).
+    So instead of writing raw SQL or JPQL, you use intuitive method names, and Spring Data JPA does the heavy lifting.
+
+* Spring Data JPA – Method Queries & DSL(Domain Specific Language)
     How it works:
     JPA parses the method name (findByName) using reflection.
     It identifies name as a property in the Student entity.
