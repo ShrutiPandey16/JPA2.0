@@ -19,4 +19,30 @@
     public class Student {
 	@Id
 	private int rollNo;........}     
-    
+
+* To interact with the database using Spring JPA:
+    Create a repository interface that extends JpaRepository<T, ID>.
+    T = Entity type (data type to be stored in table)(e.g., Student)
+    ID = Primary key type (e.g., Integer)
+    This gives access to built-in CRUD methods like save(), findById(), findAll(), deleteById() etc., without writing boilerplate SQL.
+
+    E.g.:
+        @Repository
+        public interface StudentRepo extends JpaRepository<Student, Integer>{
+
+        }
+
+* To find a value using primary key, findById() method is used. It's return type is optional. It returns null if invalid primary key value is passed. 
+
+* For custom search, such as search by name or by designation or etc. @Query annotation with query passed in the params is used with the method.
+    Eg. :
+        @Repository
+        public interface StudentRepo extends JpaRepository<Student, Integer>{
+
+            @Query("Select s from Student s where s.name = ?1")   ->  ?1 represents the position of the param of method findByName replace ? 1st param : name
+            List<Student> findByName(String name);
+        }
+
+* However, in JPA no need of using @Query annotation and mentioning the query as it handles these features itself in the backend. JPA uses a
+    Domain Specific Language(DSL) in the backend, so it looks for the column/property names and creates such methods in backend ready for user use.
+    Note : start the method with : "findBy" and add property name. E.g.: findByName         

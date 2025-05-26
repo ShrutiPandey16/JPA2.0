@@ -32,3 +32,26 @@
     | `@Column`            | Maps a field to a DB column               |
     | `@Table(name="...")` | (Optional) Specify custom table name      |
     | `@Repository`        | Marks DAO layer (can use `JpaRepository`) |
+
+* Internally, JpaRepository extends PagingAndSortingRepository, which itself extends CrudRepository. This means the repo inherits many useful methods for data access.
+
+* Spring Data JPA – Method Queries & DSL
+    How it works:
+    JPA parses the method name (findByName) using reflection.
+    It identifies name as a property in the Student entity.
+    It generates the corresponding SQL query under the hood.
+
+* Naming Keywords that Can be Used:
+    Keyword	            Meaning
+    findBy	            Basic query
+    And, Or	Combine     multiple conditions
+    Between	            Range queries
+    Like	            Pattern matching (% syntax)
+    OrderBy	            Sorting
+    In	                Matching multiple values 
+    and many other keywords
+    Eg.:
+        List<Student> findByNameAndAge(String name, int age);
+        Becomes: SELECT * FROM student WHERE name = ? AND age = ?
+
+    These are called JPQL Java Persistence Query Language    
